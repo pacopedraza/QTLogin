@@ -21,3 +21,10 @@ HEADERS  += mainwindow.h \
 
 FORMS    += mainwindow.ui \
     dialog.ui
+
+RESOURCES += \
+    logo.qrc \
+    res2.qrc \
+    results.qrc \
+    results/res2.qrc \
+    Res/myres.qrc

@@ -15,6 +15,13 @@ public:
     explicit Dialog(QWidget *parent = 0);
     ~Dialog();
 
+private slots:
+    void on_btnRead_clicked();
+
+    void on_btnCalculate_clicked();
+
+    void on_btnReset_clicked();
+
 private:
     Ui::Dialog *ui;
 };
