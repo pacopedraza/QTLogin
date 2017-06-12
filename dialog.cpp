@@ -56,6 +56,7 @@ void Dialog::on_btnCalculate_clicked()
 
     QString var_num1 = ui->txtnum1->text();
     QString var_num2 = ui->txtnum2->text();
+
     // Suma check box
     if(ui->rbtn_suma->isChecked())
     {
@@ -66,7 +67,9 @@ void Dialog::on_btnCalculate_clicked()
         if(!file.open(QIODevice::Append | QIODevice::Text))
             return;
         QTextStream out(&file);
-        out << "Log sum: " << sum << "\n";
+        QTime time = QTime::currentTime();
+        QString time_text = time.toString("hh : mm : ss");
+        out << "Log sum: " << sum << ", time: " << time_text << "\n";
 
 
     }else if(ui->rbtn_resta->isChecked()){
@@ -77,7 +80,9 @@ void Dialog::on_btnCalculate_clicked()
         if(!file.open(QIODevice::Append | QIODevice::Text))
             return;
         QTextStream out(&file);
-        out << "Log rest: " << res << "\n";
+        QTime time = QTime::currentTime();
+        QString time_text = time.toString("hh : mm : ss");
+        out << "Log res: " << res << ", time: " << time_text << "\n";
 
     }else if(ui->rbtn_multi->isChecked()){
         int multi = var_num1.toInt() * var_num2.toInt();
@@ -87,7 +92,9 @@ void Dialog::on_btnCalculate_clicked()
         if(!file.open(QIODevice::Append | QIODevice::Text))
             return;
         QTextStream out(&file);
-        out << "Log mult: " << multi << "\n";
+        QTime time = QTime::currentTime();
+        QString time_text = time.toString("hh : mm : ss");
+        out << "Log mul: " << multi << ", time: " << time_text << "\n";
 
     }else if(ui->rbtn_div->isChecked()){
         int div = var_num1.toInt() / var_num2.toInt();
@@ -97,7 +104,9 @@ void Dialog::on_btnCalculate_clicked()
         if(!file.open(QIODevice::Append | QIODevice::Text))
             return;
         QTextStream out(&file);
-        out << "Log div: " << div << "\n";
+        QTime time = QTime::currentTime();
+        QString time_text = time.toString("hh : mm : ss");
+        out << "Log div: " << div << ", time: " << time_text << "\n";
 
     }
 }
