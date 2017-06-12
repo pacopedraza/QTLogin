@@ -8,17 +8,35 @@
 #include <QFile>
 #include <QTextStream>
 #include <QString>
+#include <QTimer>
+#include <QDateTime>
 
 Dialog::Dialog(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::Dialog)
 {
     ui->setupUi(this);
+    timer = new QTimer(this);
+    connect(timer, SIGNAL(timeout()), this, SLOT(clock()));
+    timer->start(1000);
 }
+
 
 Dialog::~Dialog()
 {
     delete ui;
+}
+
+void Dialog::clock()
+{
+    QTime time = QTime::currentTime();
+    QString time_text = time.toString("hh : mm : ss");
+    if((time.second() % 2) == 0)
+    {
+        time_text[3] = ' ';
+        time_text[8] = ' ';
+    }
+    ui->lbl_time->setText(time_text);
 }
 
 void Dialog::on_btnRead_clicked()
@@ -89,3 +107,4 @@ void Dialog::on_btnReset_clicked()
     ui->txtnum1->setText("");
     ui->txtnum2->setText("");
 }
+

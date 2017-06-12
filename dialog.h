@@ -2,6 +2,7 @@
 #define DIALOG_H
 
 #include <QDialog>
+#include <QTimer>
 
 namespace Ui {
 class Dialog;
@@ -22,8 +23,12 @@ private slots:
 
     void on_btnReset_clicked();
 
+    void clock();
+
+
 private:
     Ui::Dialog *ui;
+    QTimer *timer;
 };
 
 #endif // DIALOG_H
