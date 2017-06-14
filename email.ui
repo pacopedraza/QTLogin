@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Email</class>
+ <widget class="QDialog" name="Email">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>166</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Email</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QLabel" name="lblUser">
+     <property name="text">
+      <string>User:</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLineEdit" name="txtUserEmail"/>
+   </item>
+   <item>
+    <widget class="QLabel" name="lblPass">
+     <property name="text">
+      <string>Pass:</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QLineEdit" name="txtPassEmail">
+     <property name="echoMode">
+      <enum>QLineEdit::Password</enum>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="btnSendEmail">
+     <property name="text">
+      <string>Send</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

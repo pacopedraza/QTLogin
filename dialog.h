@@ -4,6 +4,7 @@
 #include <QDialog>
 #include <QTimer>
 
+
 namespace Ui {
 class Dialog;
 }
@@ -25,6 +26,10 @@ private slots:
 
     void clock();
 
+
+    void on_btnSendEmail_clicked();
+
+    void on_btnDeleteData_clicked();
 
 private:
     Ui::Dialog *ui;

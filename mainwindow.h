@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 
+
 namespace Ui {
 class MainWindow;
 }
@@ -17,6 +18,8 @@ public:
 
 private slots:
     void on_btnLogin_clicked();
+
+    void on_btn_callGenerateKey_clicked();
 
 private:
     Ui::MainWindow *ui;

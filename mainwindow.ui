@@ -7,11 +7,11 @@
     <x>0</x>
     <y>0</y>
     <width>329</width>
-    <height>308</height>
+    <height>343</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Log In</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QVBoxLayout" name="verticalLayout">
@@ -28,7 +28,14 @@
     <item>
      <widget class="QLineEdit" name="txt_pass">
       <property name="echoMode">
-       <enum>QLineEdit::NoEcho</enum>
+       <enum>QLineEdit::Password</enum>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="btn_callGenerateKey">
+      <property name="text">
+       <string>Generate Key</string>
       </property>
      </widget>
     </item>

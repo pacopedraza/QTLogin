@@ -14,13 +14,19 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    dialog.cpp
+    dialog.cpp \
+    randomkey.cpp \
+    email.cpp
 
 HEADERS  += mainwindow.h \
-    dialog.h
+    dialog.h \
+    randomkey.h \
+    email.h
 
 FORMS    += mainwindow.ui \
-    dialog.ui
+    dialog.ui \
+    randomkey.ui \
+    email.ui
 
 RESOURCES += \
     logo.qrc \
