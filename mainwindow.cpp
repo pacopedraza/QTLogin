@@ -40,6 +40,8 @@ void MainWindow::on_btnLogin_clicked()
 
         }else{
             QMessageBox::warning(this,"Error !", " User and/or pass incorrect!");
+            ui->txtUser->setText("");
+            ui->txt_pass->setText("");
             this->show();
         }
 }

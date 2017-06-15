@@ -13,6 +13,8 @@ RandomKey::RandomKey(QWidget *parent) :
     ui(new Ui::RandomKey)
 {
     ui->setupUi(this);
+    QPixmap picture(":/imgs/encryption_1.png");
+        ui->lblKey->setPixmap(picture.scaled(30,30, Qt::KeepAspectRatio));
 }
 
 RandomKey::~RandomKey()

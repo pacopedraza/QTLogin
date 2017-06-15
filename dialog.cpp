@@ -10,7 +10,8 @@
 #include <QString>
 #include <QTimer>
 #include <QDateTime>
-#include "email.h"
+#include <QProcess>
+#include <QDesktopServices>
 
 Dialog::Dialog(QWidget *parent) :
     QDialog(parent),
@@ -20,8 +21,14 @@ Dialog::Dialog(QWidget *parent) :
     timer = new QTimer(this);
     connect(timer, SIGNAL(timeout()), this, SLOT(clock()));
     timer->start(1000);
-}
+    QPixmap picture_mail(":/imgs/email.png");
+        ui->lblEmail->setPixmap(picture_mail.scaled(50,50, Qt::KeepAspectRatio));
+    QPixmap picture_delete(":/imgs/trash.png");
+        ui->lblDelete->setPixmap(picture_delete.scaled(20,20, Qt::KeepAspectRatio));
+    QPixmap picture_reload(":/imgs/reload.png");
+        ui->lblreset->setPixmap(picture_reload.scaled(15,15, Qt::KeepAspectRatio));
 
+}
 
 Dialog::~Dialog()
 {
@@ -116,7 +123,6 @@ void Dialog::on_btnCalculate_clicked()
         QString time_text = time.toString("hh : mm : ss");
         out << "Log div: " << div << ", time: " << time_text << "\n";
         }
-
     }
 }
 
@@ -129,15 +135,42 @@ void Dialog::on_btnReset_clicked()
 
 void Dialog::on_btnSendEmail_clicked()
 {
-    Email window_email;
-    window_email.exec();
+    QMessageBox::StandardButton answer = QMessageBox::question(this,"Send Email",
+                                                               "Do you really want to send email?",
+                                         QMessageBox::StandardButton::No | QMessageBox::StandardButton::Yes);
+    if(answer == QMessageBox::StandardButton::Yes)
+    {
+        QProcess *process_send_email;
+        QFile file("out.txt");
+
+        if(!file.open(QIODevice::ReadOnly | QIODevice::Text))
+        {
+            return;
+            QMessageBox::information(0, "Info",file.errorString());
+        }
+
+        QTextStream in(&file);
+        QString results = in.readAll();
+        qDebug() << results;
+
+
+            process_send_email = new QProcess();
+            process_send_email->start("mail -s Test QT - youremail@yourdomain.com");
+            process_send_email->waitForStarted();
+            process_send_email->write(results.toLatin1());
+            process_send_email->closeWriteChannel();
+            QMessageBox::information(this,"Information",
+                                     "The email was sent successfully!", "OK");
+        file.close();
+
+    }
 }
 
 void Dialog::on_btnDeleteData_clicked()
 {
 
-    QMessageBox::StandardButton answer = QMessageBox::question(this,"Do you want to erase data?",
-                                                               "The data will be erased",
+    QMessageBox::StandardButton answer = QMessageBox::question(this,"Erase Data",
+                                                               "Do you really want to erase data?",
                                          QMessageBox::StandardButton::No | QMessageBox::StandardButton::Yes);
     if(answer == QMessageBox::StandardButton::Yes)
     {
@@ -145,6 +178,10 @@ void Dialog::on_btnDeleteData_clicked()
 
         if(!file.open(QIODevice::WriteOnly | QIODevice::Truncate))
             return;
+
+        QMessageBox::information(this,"Information",
+                                 "The data was erased", "OK");
+
     }
 
 
